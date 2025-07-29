@@ -197,6 +197,12 @@ def send_files(request):
                     action="SCAN_FAILED",
                     description=f"OCR error: {error}"
                 )
+
+                #RejectedFile.objects.create(
+                #    file = uploaded_file,
+                #    uploaded_file = timezone.now(),
+                #)
+                
                 return HttpResponse(f"OCR failed: {error}", status=500)
 
             invoice_data = extract_invoice_data(ocr_text)
